@@ -1,7 +1,83 @@
-*.pyc
-*~
-db.sqlite3
-.coverage
-static/images/signatures/
-static/images/users/
-static/CACHE
+# Monorepo: Go (Gin) backend, SvelteKit frontend, Docker, and common tooling
+
+# OS/Editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.swn
+*.bak
+.idea/
+.vscode/
+
+# Node/SvelteKit
+node_modules/
+.svelte-kit/
+build/
+dist/
+.vite/
+.turbo/
+.vercel/
+.netlify/
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# Logs and coverage
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+coverage/
+.nyc_output/
+lcov.info
+test-results/
+playwright-report/
+.playwright/
+
+# Env files (keep examples)
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.sample
+
+# Go
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+*.o
+*.a
+coverage.out
+vendor/
+
+# Docker/Dev data
+.docker/
+.data/
+data/
+pgdata/
+postgres-data/
+minio-data/
+storage/
+uploads/
+tmp/
+.tmp/
+
+# Package managers cache
+.pnpm-store/
+.npm/
+
+# Generated API clients (uncomment and adjust when paths exist)
+# packages/schema/gen/
+# apps/frontend/src/lib/generated/
+# apps/api/internal/generated/
+
+# OS junk at any depth
+**/.DS_Store
