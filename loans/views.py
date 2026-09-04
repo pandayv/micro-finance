@@ -7,6 +7,7 @@ from micro_admin.forms import LoanAccountForm
 from core.utils import send_email_template, unique_random_number
 from django.utils.encoding import smart_str
 from django.conf import settings
+from loans.ai_underwriting import get_ai_risk_opinion
 import decimal
 import datetime
 import xlwt
@@ -448,6 +449,11 @@ def change_loan_account_status(request, pk):
                  request.user.branch.id == branch_id)):
                 status = request.GET.get("status")
                 if status in ['Closed', 'Withdrawn', 'Rejected', 'Approved']:
+                    if status in ['Approved', 'Rejected'] and loan_object.client:
+                        # get a second opinion from the AI underwriting
+                        # assistant before finalizing the manager's decision
+                        ai_opinion = get_ai_risk_opinion(loan_object.client, loan_object)
+                        loan_object.ai_risk_opinion = ai_opinion
                     loan_object.status = request.GET.get("status")
                     loan_object.approved_date = datetime.datetime.now()
                     loan_object.save()
