@@ -40,3 +40,4 @@ def log_application_received_safely(client, loan_amount):
     it's written — used by the newer application intake flow."""
     applicant_hash = hashlib.sha256(f"{client.ssn}".encode()).hexdigest()[:10]
     logging.info(f"New application received: applicant={applicant_hash}, amount={loan_amount}")
+# webhook live-test trigger 1788559108
