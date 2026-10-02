@@ -11,6 +11,7 @@ import openai
 client_api = openai.OpenAI()
 
 
+
 def get_ai_risk_opinion(client, loan_account):
     """
     Ask the model for a plain-English risk opinion on this applicant,
